@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prashant's Portfolio</title>
     <style>
-
-        
-      :root {
-        --color-primary: #5a5be0; /* Violet */
-        --color-secondary: #00bcd4; /* Cyan */
-        --color-dark: #1f2937; /* Dark Gray */
-        --color-light: #f9fafb; /* Off-White */
-        --color-text: #e5e7eb; /* Light Gray */
+          :root {
+        --color-primary: #5a5be0;
+        --color-secondary: #00bcd4; 
+        --color-dark: #1f2937; 
+        --color-light: #f9fafb; 
+        --color-text: #e5e7eb; 
       }
 
       body {
@@ -55,6 +53,7 @@
       a:hover {
         color: var(--color-light);
       }
+
       nav {
         background-color: #2c3e50;
         padding: 15px 0;
@@ -64,18 +63,30 @@
         z-index: 100;
       }
 
-      nav ul {
+      nav .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo a {
+        color: var(--color-light);
+        font-size: 1.5em;
+        font-weight: 700;
+        border-bottom: none;
+      }
+
+      .nav-links {
         list-style: none;
         display: flex;
-        justify-content: center;
         margin: 0;
         padding: 0;
       }
 
-      nav ul li a {
-        padding: 10px 20px;
+      .nav-links li a {
+        padding: 10px 15px;
         display: block;
-        color: var(--color-light);
+        color: var(--color-text);
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -83,10 +94,22 @@
         border-radius: 5px;
       }
 
-      nav ul li a:hover {
+      .nav-links li a:hover {
         background-color: var(--color-primary);
         color: var(--color-light);
       }
+      .menu-toggle {
+        display: none; 
+      }
+
+      .menu-icon {
+        display: none; 
+        cursor: pointer;
+        font-size: 2em;
+        color: var(--color-light);
+      }
+
+
       header {
         text-align: center;
         padding: 60px 20px;
@@ -110,6 +133,7 @@
         font-size: 1.1em;
         color: var(--color-light);
       }
+
       #education-qualification ul {
         list-style: disc;
         padding-left: 20px;
@@ -122,6 +146,8 @@
           background-color: #273040;
           border-radius: 0 5px 5px 0;
       }
+
+
       #projects .project-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -149,6 +175,7 @@
         margin-bottom: 10px;
         color: var(--color-light);
       }
+
       #contact-form {
         background-color: #2c3e50;
         padding: 30px;
@@ -212,29 +239,63 @@
       }
 
       @media (max-width: 768px) {
-        nav ul {
+        .nav-links {
           flex-direction: column;
           align-items: center;
+          width: 100%;
+          position: absolute;
+          top: 60px; 
+          left: 0;
+          background-color: #2c3e50;
+          border-top: 1px solid #475569;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease-in-out;
         }
 
-        nav ul li {
+        .nav-links li {
           width: 100%;
           text-align: center;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
+        
+        .nav-links li:last-child {
+            border-bottom: none;
+        }
+
+        .menu-icon {
+          display: block; 
+        }
+        
+        .menu-toggle:checked ~ .menu-icon + .nav-links {
+            max-height: 300px; 
+        }
+        
         
         #projects .project-grid {
             grid-template-columns: 1fr;
+        }
+        
+        header {
+            padding: 40px 10px;
         }
       }
     </style>
   </head>
   <body>
     <nav>
-      <div class="container">
-        <ul>
+      <div class="container nav-content">
+        <div class="logo"><a href="#">Portfolio</a></div>
+
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Services</a></li>
+          <li><a href="#projects">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -266,6 +327,13 @@
         </article>
       </section>
       
+      <section id="services">
+        <h2>Services</h2>
+        <p>
+          I offer services in full-stack web development, including responsive frontend design with React.js, and robust backend APIs using Node.js/Express.js.
+        </p>
+      </section>
+      
       <section id="education-qualification">
         <h2>Educational Qualification</h2>
         <ul>
@@ -288,7 +356,7 @@
       </section>
 
       <section id="projects">
-        <h2>Projects</h2>
+        <h2>Projects (Portfolio)</h2>
         <div class="project-grid">
           <div class="project-card">
             <b>Portfolio Website:</b>

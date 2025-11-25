@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Color Changer</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        transition: background-color 0.5s ease;
+      }
+
+      .content-box {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 1.8em;
+      }
+
+      #color-display {
+        font-size: 1.5em;
+        font-weight: bold;
+        padding: 10px 0;
+        margin-bottom: 30px;
+        border: 2px dashed #ccc;
+        border-radius: 8px;
+        min-height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: color 0.5s ease;
+      }
+
+      button {
+        padding: 12px 24px;
+        font-size: 1em;
+        font-weight: 600;
+        color: white;
+        background-color: #5a5be0;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(90, 91, 224, 0.4);
+        transition: background-color 0.3s ease, transform 0.1s ease;
+      }
+
+      button:hover {
+        background-color: #4a4bcd;
+      }
+
+      button:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 5px rgba(90, 91, 224, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-box">
+      <h1>Background Color Changer</h1>
+      <div id="color-display">Click the button to change the color!</div>
+      <button id="change-color-btn">Change Color</button>
+    </div>
+
+    <script>
+      const colors = [
+        { name: 'Red', value: '#FF5733' },
+        { name: 'Green', value: '#33FF57' },
+        { name: 'Blue', value: '#3357FF' },
+        { name: 'Yellow', value: '#FFC300' },
+        { name: 'Purple', value: '#C70039' },
+        { name: 'Cyan', value: '#00FFFF' },
+        { name: 'Magenta', value: '#FF00FF' },
+        { name: 'Orange', value: '#FF5733' },
+        { name: 'Teal', value: '#008080' },
+        { name: 'Maroon', value: '#800000' },
+      ];
+
+      const body = document.body;
+      const colorDisplay = document.getElementById('color-display');
+      const changeColorBtn = document.getElementById('change-color-btn');
+
+      let currentIndex = 0;
+
+      function changeBackgroundColor() {
+        const color = colors[currentIndex];
+        body.style.backgroundColor = color.value;
+        colorDisplay.textContent = `Current Color: ${color.name} (${color.value})`;
+        currentIndex = (currentIndex + 1) % colors.length;
+      }
+      changeBackgroundColor();
+      changeColorBtn.addEventListener('click', changeBackgroundColor);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Interest Calculator</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #1a1a1a;
+      padding: 30px;
+      width: 350px;
+      border-radius: 12px;
+      box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #00eaff;
+      text-shadow: 0px 0px 8px #00eaff;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-top: 12px;
+      font-size: 14px;
+      color: #cccccc;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: none;
+      background: #333;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #00eaff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00bcd4;
+      transform: scale(1.03);
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #00ff88;
+      text-shadow: 0px 0px 8px #00ff88;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Simple Interest Calculator</h2>
+
+    <label>Principal</label>
+    <input type="number" id="principal">
+
+    <label>Rate (%)</label>
+    <input type="number" id="rate">
+
+    <label>Time (years)</label>
+    <input type="number" id="time">
+
+    <button id="calculateBtn">Calculate</button>
+
+    <h3 id="result"></h3>
+  </div>
+
+  <!-- ES6 Modules in Same File -->
+  <script type="module">
+
+    // --------- Module 1: Calculate Interest ---------
+    const calculateInterest = (principal, rate, time) => 
+      (principal * rate * time) / 100;
+
+    // --------- Module 2: Display Result ---------
+    const displayResult = (interest) => {
+      const result = document.getElementById("result");
+      result.textContent = `Simple Interest: ₹${interest}`;
+    };
+
+    // --------- Main Program ---------
+    document.getElementById("calculateBtn").addEventListener("click", () => {
+      const principal = Number(document.getElementById("principal").value);
+      const rate = Number(document.getElementById("rate").value);
+      const time = Number(document.getElementById("time").value);
+
+      const interest = calculateInterest(principal, rate, time);
+      displayResult(interest);
+    });
+
+  </script>
+</body>
+</html>
